@@ -11,7 +11,6 @@
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script src="./intro.js"></script>
 
-
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
@@ -66,7 +65,9 @@
 
         <!-- Aladin Lite container at requested dimensions -->
         <div id="aladin-lite-div" style="width:800px;height:800px;"></div>
-
+        <div id="sidebar">
+            TEST TEST 
+        </div>
         <input id="DSS" type="radio" name="survey" value="P/DSS2/color"><label for="DSS">DSS color<label>
         <input id="DSS-blue" type="radio" name="survey" value="P/DSS2/blue"><label for="DSS-blue">DSS blue<label>
         <input id="2MASS" type="radio" name="survey" value="P/2MASS/color"><label for="2MASS">2MASS<label>
@@ -81,10 +82,14 @@
         <script type="text/javascript">
             var aladin = A.aladin('#aladin-lite-div', {survey: "P/DSS2/color", fov:1.5, target: "M 20"});
 
-            $('input[name=survey]').change(function() {
-              aladin.setImageSurvey($(this).val());
-              });
+            $('input[name=survey]').change(function() {aladin.setImageSurvey($(this).val());});
 
+            var aladin = A.aladin('#aladin-lite-div', {target: 'M 82', fov: 0.25});
+            var updateSidebar = function (marker) {
+	    var htmlthings = "<h1>" + marker.data.MAIN_ID + "</h1> <h2> <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Sally_Ride_in_1984.jpg/220px-Sally_Ride_in_1984.jpg'> </h2>";
+            document.getElementById("sidebar").innerHTML = htmlthings;
+            };
+            aladin.addCatalog(A.catalogFromSimbad('M 82', 0.1, {onClick: updateSidebar}));
         </script>
 
   </body>
