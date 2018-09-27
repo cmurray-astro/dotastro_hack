@@ -4,7 +4,6 @@
 
 <link rel="stylesheet" href="layout.css">
 
-
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <link rel="stylesheet" href="./introjs.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -18,8 +17,7 @@
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 
-
-    <title>ADS All-Sky survey on Aladin Lite</title>
+    <title>Hooray outreach!</title>
 
       </head>
   <body>
@@ -33,7 +31,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a data-step="1" data-intro="Hi and welcome to the the [Sky Test]! Click Next to navigate this tour." class="navbar-brand" href="/">[Sky Test]</a>
+        <a data-step="1" data-intro="Hi and welcome!" class="navbar-brand" href="/">Explore Exciting Research!</a>
 
       </div>
 
@@ -46,51 +44,58 @@
             <span class="glyphicon glyphicon-info-sign"></span> Tour
           </a>
 
-
           <li><a href="/wwt/" id='wwt-link' target="_blank"><span class="glyphicon glyphicon-new-window"></span> Open WWT version</a></li>-->
         </ul>
 
-        <p class="navbar-text pull-right">Explore astronomy!</p>
+        <!--<p class="navbar-text pull-right">Explore astronomy!</p>-->
       </div><!-- /.navbar-collapse -->
     </nav>
 
-    <!--<h1>Sky test!</h1>-->
-
-
         <!-- Aladin Lite CSS style file -->
         <link rel="stylesheet" href="http://aladin.u-strasbg.fr/AladinLite/api/v2/latest/aladin.min.css" />
-
         <!-- Aladin Lite has a dependency on the jQuery library -->
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js" charset="utf-8"></script>
 
         <!-- Aladin Lite container at requested dimensions -->
+
         <div id="aladin-lite-div" style="width:800px;height:800px;"></div>
         <div id="sidebar">
-            TEST TEST 
+
         </div>
         <input id="DSS" type="radio" name="survey" value="P/DSS2/color"><label for="DSS">DSS color<label>
-        <input id="DSS-blue" type="radio" name="survey" value="P/DSS2/blue"><label for="DSS-blue">DSS blue<label>
+        <input id="Mellinger" type="radio" name="survey" value="P/Mellinger/color"><label for="Mellinger">Mellinger<label>
         <input id="2MASS" type="radio" name="survey" value="P/2MASS/color"><label for="2MASS">2MASS<label>
         <input id="allwise" type="radio" name="survey" value="P/allWISE/color"><label for="allwise">AllWISE<label>
         <input id="glimpse" type="radio" name="survey" value="P/GLIMPSE360"><label for="glimpse">GLIMPSE 360<label>
-
 
         <!-- Aladin Lite JS code -->
         <script type="text/javascript" src="http://aladin.u-strasbg.fr/AladinLite/api/v2/latest/aladin.min.js" charset="utf-8"></script>
 
         <!-- Creation of Aladin Lite instance with initial parameters -->
         <script type="text/javascript">
-            var aladin = A.aladin('#aladin-lite-div', {survey: "P/DSS2/color", fov:1.5, target: "M 20"});
+            var aladin = A.aladin('#aladin-lite-div', {survey: "P/Mellinger/color", fov:180, target: "M 20"});
 
             $('input[name=survey]').change(function() {aladin.setImageSurvey($(this).val());});
 
-            var aladin = A.aladin('#aladin-lite-div', {target: 'M 82', fov: 0.25});
+            var aladin = A.aladin('#aladin-lite-div', {target: 'M 82', fov: 1});
             var updateSidebar = function (marker) {
-	    var htmlthings = "<h1>" + marker.data.MAIN_ID + "</h1> <h2> <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Sally_Ride_in_1984.jpg/220px-Sally_Ride_in_1984.jpg'> </h2>";
-            document.getElementById("sidebar").innerHTML = htmlthings;
+              var htmlthings = "<h1>" + marker.data.MAIN_ID + "</h1> <h2> <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Sally_Ride_in_1984.jpg/220px-Sally_Ride_in_1984.jpg'> </h2>";
+              document.getElementById("sidebar").innerHTML = htmlthings;
             };
             aladin.addCatalog(A.catalogFromSimbad('M 82', 0.1, {onClick: updateSidebar}));
+
+
+            var marker1 = A.marker(121.597426, -41.375153, {popupTitle: '<a href ="http://hubblesite.org/news_release/news/2018-43" >Exciting infrared excess around neutron star</a>', popupDesc: 'Bettina Posselt, associate professor of Astronomy and Astrophysics at Pennsylvania State University, and collaborators detected tantallizing extended infrared emission around a nearby neutron star, part of a group of X-ray pulsars known as the Magnificent Seven. Using data from NASA`s Hubble Space Telescope, this finding may be the first evidence for a `pulsar wind nebula` observed only at infrared wavelengths.'});
+            var marker2 = A.marker(84.676489, -69.100900, {popupTitle: '<a href="http://mcdonaldobservatory.org/news/releases/20180912">Magnetic waves drive chaos in stellar nurseries</a>', popupDesc: 'Stella Offner, assistant professor at the University of Texas at Austin, conducted simulations of interstellar medium physics to identify the processes responsible for the formation of new stars. Magnetic waves generated by the interatction between energetic stellar winds and ambient magnetic fields are crucial!'});
+            var marker3 = A.marker(206.847789, -6.136707, {popupTitle: '<a href = "http://www.exoplanetes.umontreal.ca/twice-the-size-of-earth/?lang=en" >Exoplanet twice the size of Earth</a>', popupDesc: 'Merrin Peterson, graduate student at the Universite de Montreal, discovered an exoplanet (a.k.a. extra-solar planet) with twice the size of Earth using NASA`s Kepler Space Telescope.'});
+            var marker4 = A.marker(273.1542,  -22.7583, {popupTitle: '<a href = "https://www.jpl.nasa.gov/news/news.php?release=2018-213" >Cassini`s view of Titan</a>', popupDesc: 'Elizabeth ("Zibi") Turtle of the Johns Hopkins Applied Physics Lab and the Cassini Imaging Science Subsystem team led a recent effort to capture new images of lakes and seas on Saturn`s exciting, giant moon, Titan in the final days of NASA`s Cassini mission.'});
+            var marker5 = A.marker(266.416826, -29.007797, {popupTitle: '<a href="https://www.eaobservatory.org/jcmt/2018/08/discovering-magnetized-inflow-accreting-to-the-center-of-milky-way-galaxy-an-important-force-to-transport-gas-to-the-supermassive-black-hole-sagittarius-a/">Magnetized Inflow Accreting to the center of Milky Way Galaxy</a>', popupDesc: 'Pei-Ying Hsieh of the Academia Sinica Institute of Astronomy and Astrophysics detected clear evidence for mass flow onto the supermassive back hole at the center of the Milky Way Galaxy.'});
+            var markerLayer = A.catalog({color: '#800080', sourceSize:16});
+            aladin.addCatalog(markerLayer);
+            markerLayer.addSources([marker1, marker2, marker3, marker4]);
+
         </script>
+
 
   </body>
 </html>
